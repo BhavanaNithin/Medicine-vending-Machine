@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>HEALTH CARE</title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link> -->
+        <!-- Favicon-->
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="http://127.0.0.1:5000/static/css1/styles.css" rel="stylesheet" />
+        <style>
+            #Box1{
+                padding: 25px;
+                background-color: white;
+                height: 80vh;
+                position: relative;
+            }
+            #Box{
+                padding: 25px 10px;
+                border: 1px solid #6c757d;
+                height: 65vh;
+                overflow: scroll;
+                display: flex;
+                flex-direction: column;
+            }
+            form{
+                position: absolute;
+                width: 100%;
+                display: flex;
+                bottom: 10px;
+            }
+            input[type="text"]{
+                width: 89%;
+            }
+            #left, #right{
+                background-color: white;
+                width: 48%;
+                padding: 10px;
+                text-align: justify;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+            }
+            #left{
+                align-self: flex-start;
+            }
+            #right{
+                align-self: flex-end;
+            }
+            .row{
+                margin-top: 100px;
+            }
+            body{
+                background-color: aliceblue;
+            }
+            p{
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <!-- <li class="nav-item"><a class="nav-link" href="#page-top">AUTISM</a></li> -->
+                <a class="navbar-brand h1" href="/home">HEALTH CARE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="Box1">
+                        <center><h3>CHATBOT</h3></center>
+                        <div id="Box">
+                            {% if chat_history %}
+                            {% for row in chat_history %}
+                            <div id="right">
+                                <p>{{row[0]}}</p>
+                            </div>
+                            <br>
+                            <div id="left">
+                                {% autoescape false %}
+                                <p>{{row[1]}}</p>
+                                {% endautoescape %}
+                            </div>
+                            <br>
+                            {% endfor %}
+                            {% endif %}
+                          
+                        </div>
+                        <form method="post" action="/analyse">
+                                <input type="text" class="form-control" name="query" id="query" style="width: 85%;" placeholder="Enter query" required />
+                                <img onclick="startDictation()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKMAAACUCAMAAADIzWmnAAAAY1BMVEX6+voAAAD////7+/skJCSkpKSNjY2CgoJxcXESEhLAwMC7u7usrKzw8PDOzs7a2tro6OgpKSlEREScnJxUVFQfHx9hYWFcXFzGxsaysrI4ODhmZmYYGBjg4OBNTU17e3sxMTHLyaCzAAAFRElEQVR4nO2ca5eyIBDHYVCzC1rbTbu4ff9P+ViBl8KNAXrEc/iffbG7pfwEZoCBkTBiIwYl/aQSLMsgdtfD8iMipUsYkxGuGw3GzdUK0o6R8R8NREpP3KoUK0bYaiFSurWpSCtGWOu09F3R2gLShpHBTBOR0pmFbdswwvWkzXjKzSvSinGljUjpahRGRg4Ixp1NQcaXwhqBSKm51dgwFijGxSiMCYoxGYXxjGI8jMDIQN/z3HUy9pA2jBGKMQqMgTEwToDxgmK8jMBYjzM4jTHOEMDJuBzbtev/kNX88bvf71xo0R9nGI3RHxnMUXY9D/7RCSP1iTHJ1BrBZgYZV/74x0HG2C6Spyjp/9WjT209BZsZ0BR8z94nxs2PUjufGLd8rZRPNhNPwD9OwYdPYSzcb1SKphDv8cr3DGiMtesgY5Uq9esT4xR8z5TnZj4xpuVKpXKUtSvOrsPa1Q2jV/7xHG+V8qk/TsGuY2BK+cU4VJQ/jIPjtUeMA/LKrgc0Bf/oVZwiueZK+WQzYf74kapbI+h6FAW9/OmWEfJt/NDzyJOhzUD+vMlW/+AUhlEei4qNGIXvgVj8rX9wCsNY9u5uuL5unlR/Xv4FxtNOqYNPjFvClXoW5AfjY24Gbz/SrL1g/HuO6wfjLCuU8qmtL9FeocvNJ5sZkFe+Z0BRYJwgo914/V3GhRNGOafQTwbBMGbi7iIqAhWKsRJXyRSH7CuMubi7OAUDvyhGsb5uThp/Z/7IZWmk32p6Ej2EyCfTPy+OWSuAuPuRixk1ilHM3rk8nK+/6kEx7p93j2RxmIPNJ/lgwtL2X2JMRXmLl66lo5m4Rh7OT7/EKB1k8lKejoqX50KE8FGMV3H/6DlhZUT/pP3h2dSMSaeKyKdBra951S9AI7dQSlRbY2cV4lgAKk7BZEOlMgyw00SsxJK/6dIJplgMIyzEMWGZMKjtfmTFyyS1CyZTBVePTWPLTQLN5L23r1eYhENcTKqxypOoSEbSIa6OUlFIm6SGOlSKZJTDoXR39X8+J3UduPxyk+vHv8fY9vnGd8D6k91UcmRuey/CgRswShdJf0gD+beXPDeIpEmOxSUbYmOkjfuhM3klQDJ8enieyMU/I01LI484Yxnbbj9vRjMGi6H04Z9FEwuFUj4JNmcTHWvuzBqzFpKsVFU5X5EWMWv+jQ1Goxm7Y0s73b9Tnvvrm+gc8zag3EGssJsg+Jg95E1C861oa6SmzMqkeg5El2pWZqTDAsVNXrRHZ+ca7Ct0ZhLzZYeDATDO13merzkn0Ptk2XYF/LkKA0bWHQC3fW/MnnsP/Z1g4N0L8NtdJvszDDoD4CH/UCiDvDMUpQY7ckZ7SMA7bvsWkz/KrbtpfGu/fEQNgjaMNWR3KhEt+cBOGwBfdq09NUE03YvrQ9JjnL9vXNVdM4+P1BrReL8QeD9KcTuXHKS9PH/h5fnW+87MDNF8T5NB+frihyhdFdn1rqxYpa8Rq43xa1Ns9l0zVVDqsok2qsTDKhsjv7Bub/0gQGLYzraMdVVeDzpJXfPD1eb1OLbvnSGLz3GA84KYV6I9Y12VvPh72ZUW3KYSHTA+3CDf7tQhtNuuHs8tCV0wEuGtk2PfF22OM5VnH4tRzMtqtyiXLL+1o+zPz2xu7oaRiGmZjPYVjwHH1Z2dMd7VbI+Yv3hEocDoRoHRjQKjGwVGNwqMbhQY3SgwupHj9850548enL0mkC3fJBfcyftHhTGkDeOBzt8kGBUfHEdixCgwBsbAePwM1tFuFMZljJH5i6XD+83cKDC60SQY/wEZ8FsN3xAnQgAAAABJRU5ErkJggg==" style="width:40px" />
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="http://127.0.0.1:5000/static/js1/scripts.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#Box").scrollTop($("#Box")[0].scrollHeight);
+            });
+        </script>
+        <script>
+
+            function startDictation() {
+  
+                if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+                    var recognition = new webkitSpeechRecognition();
+
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+
+                    recognition.lang = 'en=IN';
+                    recognition.start();
+
+                    recognition.onresult = function(e) {
+                    document.getElementById('query').value
+                                            = e.results[0][0].transcript;
+                    recognition.stop();
+                    //   document.getElementById('labnol').submit();
+                    };
+
+                    recognition.onerror = function(e) {
+                    recognition.stop();
+                    }
+
+                }
+                }
+        </script>
+    </body>
+</html>

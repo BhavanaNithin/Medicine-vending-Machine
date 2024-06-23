@@ -1,0 +1,52 @@
+{
+    "intents": [
+            {
+                    "tag": "common cold",
+                    "patterns": [
+                           " Runny or Stuffy Nose",
+                            "Sore Throat",
+                            "Sneezing"
+                            
+                    ],
+                    "responses": [
+                           "you have cold",
+                           "Antihistamines",
+                           "Cough Suppressants"
+                    ],
+                    "context_set": ""
+            },
+            {
+                    "tag": "cough",
+                    "patterns": [
+                            "cough",
+                            "Throught infection",
+                            "Shortness of Breath"
+                    ],
+                    "responses": [
+                            "Dextromethorphan" ,
+                            "Guaifenesin",
+                            "Albuterol ",
+                            "Amoxicillin"
+                    ],
+                    "context_set": ""
+            },
+            {
+                    "tag": "fever",
+                    "patterns": [
+
+                            "Body pain",
+                            "Muscle ache",
+                            "Dehydration"
+                            
+                       
+                    ],
+                    "responses": [
+                            "Paracetamol (Acetaminophen)",
+                            "Aspirin",
+                            "Naproxen"
+            
+
+                   ],
+                    "context_set": ""
+            }]
+}

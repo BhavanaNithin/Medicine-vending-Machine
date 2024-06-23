@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    #chatbutton {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HEHBT8FQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HEHBT8FQK');
+  </script>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="theme-color" content="#af8322" />
+
+  <title>K S Institute of technology </title>
+ 
+  <meta
+    content="Website of various clubs of Department Of Information Science And Engineering"
+    name="description">
+  <meta content="College Clubs"
+    name="keywords">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Dancing+Script"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="http://127.0.0.1:5000/static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="http://127.0.0.1:5000/static/css/scholar.css" rel="stylesheet">
+  <link href="http://127.0.0.1:5000/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="d-flex" style="margin-left: 75px;">
+      <h1 class="logo"><img src="https://ksit.ac.in/img/leftlogo.png"  alt="">
+        <a href="/home">Global Acdemy  of technology, Bangalore</a>
+       </h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/gallery">Gallery</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <div class="container">
+
+    <div class="section-title">
+      <br><br>
+      <!-- <h2>Awards</h2> -->
+      <h3><span>Gallery</span></h3>
+    </div>
+
+
+    <div class="scholarship-list">
+      {% for img in images %}
+      <div class="scholarship">
+        <img src="{{img}}" style="width: 100%;height: 320px;">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
+
+    <a href="/analyse">
+      <div id="chatbutton">
+        <img src="data:image/png;base64,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" style="width: 50px;height: 50px;">
+        </div>
+      </a>
+
+<!-- Vendor JS Files -->
+<script src="http://127.0.0.1:5000/static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/aos/aos.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="http://127.0.0.1:5000/static/vendor/waypoints/noframework.waypoints.js"></script>
+
+<!-- Template Main JS File -->
+<script src="http://127.0.0.1:5000/static/js/main.js"></script>
+<!-- jQuery -->
+<script src="http://127.0.0.1:5000/static/vendor/jquery/jquery.min.js"></script>
+
+</body>
+</html>

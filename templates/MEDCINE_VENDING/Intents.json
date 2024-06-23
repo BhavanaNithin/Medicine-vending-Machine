@@ -1,0 +1,53 @@
+{
+    "intents": [
+            {
+                    "tag": "common cold",
+                    "patterns": [
+                           " Runny or Stuffy Nose",
+                            "Sore Throat",
+                            "Sneezing"
+                            
+                    ],
+                    "responses": [
+                           "you have cold",
+                           "Antihistamines",
+                           "Cough Suppressants"
+                    ],
+                    "context_set": ""
+            },
+            {
+                    "tag": "cough",
+                    "patterns": [
+                            "How long has the cough persisted? (Acute, subacute, or chronic)",
+                            "Is the cough dry or productive",
+                            "Does the cough occur at specific times (e.g., night, after meals)?",
+                             "cough"
+                    ],
+                    "responses": [
+                            "Dextromethorphan" ,
+                            "Guaifenesin",
+                            "Albuterol ",
+                            "Amoxicillin"
+                    ],
+                    "context_set": ""
+            },
+            {
+                    "tag": "fever",
+                    "patterns": [
+
+                            "Body pain",
+                            "How long have you had the fever?",
+                            "Are you experiencing other symptoms, such as headache, sore throat, cough, chills, sweating, body aches, or rash?",
+                            "Have you traveled recently or had contact with someone who was sick?"
+                       
+                    ],
+                    "responses": [
+                            "Paracetamol (Acetaminophen)",
+                            "Aspirin",
+                            "Naproxen"
+            
+
+                   ],
+                    "context_set": ""
+            }]
+}
